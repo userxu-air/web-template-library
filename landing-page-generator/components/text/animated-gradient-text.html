@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>渐变流动文字</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+
+.grad-text{background:linear-gradient(90deg,#ffaa40,#9c40ff,#ffaa40);background-size:300% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:gradflow 4s linear infinite;}
+@keyframes gradflow{0%{background-position:0% 50%}100%{background-position:300% 50%}}
+
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;}}
+</style>
+</head>
+<body class="bg-neutral-950 text-white min-h-screen flex items-center justify-center p-8">
+<div class="text-center">
+  <h1 class="grad-text text-6xl md:text-8xl font-extrabold tracking-tight">创建令人惊叹的<br>产品体验</h1>
+  <p class="mt-6 text-neutral-400 text-lg max-w-xl mx-auto">一行渐变动画文字，为你的 Hero 区注入流动的生命力。</p>
+</div>
+<script></script>
+</body>
+</html>

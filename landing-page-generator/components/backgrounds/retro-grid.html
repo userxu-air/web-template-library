@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复古透视网格</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;margin:0;overflow-x:hidden;}
+.bg-layer{position:fixed;inset:0;z-index:0;}
+.content{position:relative;z-index:1;}
+
+.retro{position:absolute;inset:0;background:linear-gradient(180deg,#0f172a,#1e1b4b 60%,#f472b6 100%);}
+.retro::before{content:'';position:absolute;left:50%;bottom:0;width:200%;height:60%;transform:translateX(-50%);
+  background-image:linear-gradient(rgba(244,114,182,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(244,114,182,.5) 1px,transparent 1px);
+  background-size:40px 40px;transform-origin:bottom;transform:translateX(-50%) perspective(400px) rotateX(60deg);
+  animation:gridscroll 2s linear infinite;}
+@keyframes gridscroll{0%{background-position:0 0}100%{background-position:0 40px}}
+
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;}}
+</style>
+</head>
+<body class="bg-neutral-950 text-white min-h-screen">
+<div class="bg-layer"><div class="retro"></div></div>
+<div class="content min-h-screen flex items-center justify-center text-center p-8">
+  <div>
+    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight">复古未来</h1>
+    <p class="mt-6 text-neutral-300 text-lg max-w-xl mx-auto">Synthwave 风格的透视网格，怀旧与未来感交织。</p>
+  </div>
+</div>
+<script></script>
+</body>
+</html>

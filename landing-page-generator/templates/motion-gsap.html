@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MOTION — GSAP Animation Template</title>
+<meta name="description" content="A high-end landing template powered by GSAP: timeline entrances, scroll-triggered reveals, parallax, pinned sections, counters and scroll progress. Built to showcase professional web animation." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { ink:"#0d0f14", panel:"#12151c", line:"#20242e", gold:"#e8b45a", cream:"#f4f1ea" },
+        fontFamily: { display:["Space Grotesk","sans-serif"], sans:["Inter","sans-serif"] },
+      },
+    },
+  };
+</script>
+<style>
+  html { -webkit-font-smoothing: antialiased; }
+  body { background:#0d0f14; color:#f4f1ea; font-family:"Inter",sans-serif; }
+  .font-display { font-family:"Space Grotesk",sans-serif; }
+
+  /* gradient accent line */
+  .accent-line { background: linear-gradient(90deg, transparent, #e8b45a, transparent); }
+
+  /* hero title mask */
+  .mask-line { display:block; overflow:hidden; }
+  .mask-inner { display:inline-block; transform: translateY(110%); }
+
+  /* subtle noise grid */
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(232,180,90,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232,180,90,.05) 1px, transparent 1px);
+    background-size: 54px 54px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 35%, transparent 78%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 35%, transparent 78%);
+  }
+
+  /* card */
+  .g-card { background:#12151c; border:1px solid #20242e; border-radius:1rem; }
+</style>
+</head>
+<body class="bg-ink text-cream">
+
+<!-- scroll progress -->
+<div class="fixed top-0 left-0 right-0 h-0.5 z-[60] origin-left scale-x-0" style="background:linear-gradient(90deg,#e8b45a,#f4f1ea);" id="progressBar"></div>
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50">
+  <nav class="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-2.5 font-display font-semibold tracking-wide">
+      <span class="w-2 h-2 rounded-full bg-gold"></span> MOTION<span class="text-gold">.</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-cream/60">
+      <a href="#stats" class="hover:text-gold transition">Stats</a>
+      <a href="#features" class="hover:text-gold transition">Features</a>
+      <a href="#pinned" class="hover:text-gold transition">Showcase</a>
+      <a href="#contact" class="hover:text-gold transition">Contact</a>
+    </div>
+    <a href="#contact" class="rounded-lg border border-cream/20 hover:border-gold text-cream px-4 py-2 text-sm font-medium transition">Get Started</a>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0 grid-bg"></div>
+  <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-gold/10 blur-[140px]"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 pt-36 pb-28">
+    <p class="text-xs tracking-[0.3em] uppercase text-gold mb-6 hero-sub">GSAP · ScrollTrigger · Timeline</p>
+    <h1 class="font-display text-5xl sm:text-6xl lg:text-8xl font-bold leading-[1.02] tracking-tight">
+      <span class="mask-line"><span class="mask-inner">Interaction,</span></span>
+      <span class="mask-line"><span class="mask-inner">brought to <span class="text-gold">life.</span></span></span>
+    </h1>
+    <p class="mt-7 max-w-xl text-lg text-cream/60 leading-relaxed hero-sub">
+      A motion-driven landing template — timeline entrances, scroll-scrubbed parallax, pinned showcases and live counters. Built with GSAP and professional animation principles.
+    </p>
+    <div class="mt-10 flex flex-wrap gap-4 hero-cta">
+      <a href="#features" class="rounded-lg bg-gold text-ink font-semibold px-7 py-3.5 transition hover:brightness-110">Explore Motion</a>
+      <a href="#pinned" class="rounded-lg border border-cream/20 hover:border-gold px-7 py-3.5 font-medium transition">See Showcase</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS (counter) ============ -->
+<section id="stats" class="border-y border-line/60 bg-panel/40">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+    <div class="stat-item">
+      <div class="font-display text-4xl lg:text-5xl font-bold text-gold"><span class="stat-num" data-count="60">0</span>fps</div>
+      <div class="mt-1 text-sm text-cream/50">Smooth playback</div>
+    </div>
+    <div class="stat-item">
+      <div class="font-display text-4xl lg:text-5xl font-bold text-gold"><span class="stat-num" data-count="120">0</span>+</div>
+      <div class="mt-1 text-sm text-cream/50">Animation recipes</div>
+    </div>
+    <div class="stat-item">
+      <div class="font-display text-4xl lg:text-5xl font-bold text-gold"><span class="stat-num" data-count="8">0</span></div>
+      <div class="mt-1 text-sm text-cream/50">Core skill modules</div>
+    </div>
+    <div class="stat-item">
+      <div class="font-display text-4xl lg:text-5xl font-bold text-gold">99<span class="text-gold/50">%</span></div>
+      <div class="mt-1 text-sm text-cream/50">Reduced-motion ready</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES (scroll reveal stagger) ============ -->
+<section id="features" class="max-w-7xl mx-auto px-6 lg:px-8 py-28">
+  <div class="max-w-2xl">
+    <p class="text-xs tracking-[0.3em] uppercase text-gold">Capabilities</p>
+    <h2 class="mt-3 font-display text-3xl lg:text-5xl font-bold tracking-tight">Animation that feels engineered, not decorative.</h2>
+  </div>
+
+  <div class="mt-14 grid md:grid-cols-3 gap-6">
+    <div class="g-card p-8 reveal-card">
+      <div class="font-display text-5xl font-bold text-cream/10">01</div>
+      <h3 class="mt-6 font-display text-xl font-semibold">Timeline Control</h3>
+      <p class="mt-3 text-sm text-cream/55 leading-relaxed">Sequence multi-step animations with precise timing, nested timelines and playback control.</p>
+    </div>
+    <div class="g-card p-8 reveal-card">
+      <div class="font-display text-5xl font-bold text-cream/10">02</div>
+      <h3 class="mt-6 font-display text-xl font-semibold">ScrollTrigger</h3>
+      <p class="mt-3 text-sm text-cream/55 leading-relaxed">Scroll-linked reveals, scrubbed parallax and pinned sections that respond to the viewport.</p>
+    </div>
+    <div class="g-card p-8 reveal-card">
+      <div class="font-display text-5xl font-bold text-cream/10">03</div>
+      <h3 class="mt-6 font-display text-xl font-semibold">Responsive &amp; Accessible</h3>
+      <p class="mt-3 text-sm text-cream/55 leading-relaxed">gsap.matchMedia() adapts to breakpoints and honours prefers-reduced-motion automatically.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PINNED SHOWCASE ============ -->
+<section id="pinned" class="relative">
+  <div class="h-screen flex flex-col items-center justify-center text-center px-6">
+    <p class="text-xs tracking-[0.3em] uppercase text-gold mb-6">Pinned Showcase</p>
+    <div class="pin-stage relative h-40 w-full max-w-3xl">
+      <h2 class="pin-line pin-a font-display text-3xl lg:text-6xl font-bold absolute inset-0 flex items-center justify-center">Scroll-scrubbed.</h2>
+      <h2 class="pin-line pin-b font-display text-3xl lg:text-6xl font-bold absolute inset-0 flex items-center justify-center opacity-0">Pinned to viewport.</h2>
+      <h2 class="pin-line pin-c font-display text-3xl lg:text-6xl font-bold absolute inset-0 flex items-center justify-center opacity-0">Progress = scroll.</h2>
+    </div>
+    <p class="mt-6 max-w-md text-cream/50">This whole section stays pinned while you scroll, driving a timeline forward — classic GSAP ScrollTrigger scrub pattern.</p>
+  </div>
+</section>
+
+<!-- ============ PARALLAX ============ -->
+<section class="relative overflow-hidden py-32 border-y border-line/60">
+  <div class="absolute inset-0 -z-10">
+    <div class="parallax-a absolute top-1/4 left-[8%] font-display text-7xl lg:text-9xl font-bold text-cream/5 select-none">MOTION</div>
+    <div class="parallax-b absolute bottom-1/4 right-[6%] font-display text-7xl lg:text-9xl font-bold text-gold/5 select-none">MOTION</div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+    <p class="text-xs tracking-[0.3em] uppercase text-gold">Parallax</p>
+    <h2 class="mt-4 font-display text-3xl lg:text-5xl font-bold">Layers move at their own pace.</h2>
+    <p class="mt-4 max-w-lg mx-auto text-cream/55">Background typography drifts at a different speed than content — a subtle depth effect with zero layout cost, powered by transforms.</p>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section id="contact" class="max-w-7xl mx-auto px-6 lg:px-8 py-28 text-center">
+  <div class="rounded-3xl border border-line bg-panel/60 px-8 py-20 reveal-card">
+    <h2 class="font-display text-3xl lg:text-5xl font-bold tracking-tight">Ready to add motion?</h2>
+    <p class="mt-4 text-cream/55 max-w-xl mx-auto">This template is a starting point — swap in your content and let GSAP handle the polish.</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <a href="#" class="rounded-lg bg-gold text-ink font-semibold px-8 py-4 transition hover:brightness-110">Get the Template</a>
+      <a href="#" class="rounded-lg border border-cream/20 hover:border-gold px-8 py-4 font-medium transition">Learn GSAP</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="border-t border-line/60">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-2 font-display font-semibold"><span class="w-2 h-2 rounded-full bg-gold"></span> MOTION<span class="text-gold">.</span></div>
+    <p class="text-sm text-cream/40">GSAP animation template · powered by GreenSock</p>
+  </div>
+</footer>
+
+<!-- ============ GSAP ============ -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// Respect reduced motion: skip animations when user prefers them off
+const mm = gsap.matchMedia();
+mm.add("(prefers-reduced-motion: reduce)", () => {
+  gsap.set([".mask-inner", ".hero-sub", ".hero-cta", ".stat-item", ".reveal-card"], { clearProps: "all" });
+});
+
+mm.add("(prefers-reduced-motion: no-preference)", () => {
+
+  // --- Hero timeline entrance ---
+  const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+  tl.to(".mask-inner", { yPercent: 0, duration: 1, stagger: 0.14 }, 0.15)
+    .from(".hero-sub", { autoAlpha: 0, y: 26, duration: 0.8 }, "-=0.6")
+    .from(".hero-cta > *", { autoAlpha: 0, y: 18, duration: 0.6, stagger: 0.1 }, "-=0.5");
+
+  // --- Stats counter ---
+  gsap.utils.toArray(".stat-num").forEach(el => {
+    const target = +el.dataset.count;
+    gsap.fromTo(el, { innerText: 0 }, {
+      innerText: target, duration: 2, ease: "power2.out", snap: { innerText: 1 },
+      scrollTrigger: { trigger: el, start: "top 88%" }
+    });
+  });
+  // stats fade-up
+  gsap.from(".stat-item", { autoAlpha: 0, y: 30, duration: 0.8, stagger: 0.1, scrollTrigger: { trigger: "#stats", start: "top 85%" } });
+
+  // --- Features scroll reveal (batch stagger) ---
+  ScrollTrigger.batch(".reveal-card", {
+    start: "top 88%",
+    once: true,
+    onEnter: (batch) => gsap.fromTo(batch, { autoAlpha: 0, y: 50 }, { autoAlpha: 1, y: 0, duration: 1, ease: "power3.out", stagger: 0.12 })
+  });
+
+  // --- Pinned showcase ---
+  const pinTl = gsap.timeline({
+    scrollTrigger: { trigger: "#pinned", start: "top top", end: "+=250%", scrub: true, pin: true }
+  });
+  pinTl.to(".pin-a", { autoAlpha: 0, y: -50, duration: 1 })
+    .to(".pin-b", { autoAlpha: 1, y: 0, duration: 1 }, "-=0.6")
+    .to(".pin-b", { autoAlpha: 0, y: -50, duration: 1 }, "+=0.2")
+    .to(".pin-c", { autoAlpha: 1, y: 0, duration: 1 }, "-=0.6");
+
+  // --- Parallax ---
+  gsap.to(".parallax-a", { yPercent: 60, ease: "none", scrollTrigger: { trigger: ".parallax-a", start: "top bottom", end: "bottom top", scrub: true } });
+  gsap.to(".parallax-b", { yPercent: -60, ease: "none", scrollTrigger: { trigger: ".parallax-b", start: "top bottom", end: "bottom top", scrub: true } });
+
+  // --- Scroll progress bar ---
+  gsap.to("#progressBar", { scaleX: 1, ease: "none", scrollTrigger: { start: 0, end: "max", scrub: 0.3 } });
+
+});
+</script>
+</body>
+</html>

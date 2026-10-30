@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nova 智能水杯 · 让喝水成为一种享受</title>
+<meta name="description" content="Nova 智能水杯，实时监测饮水、智能提醒、温控保温，用科技守护你的健康。">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { brand: { 300:"#fbbf24", 400:"#f59e0b", 500:"#f97316", 600:"#ea580c" }, accent: "#fb7185" },
+        fontFamily: { sans: ["Inter","system-ui","sans-serif"], display: ["Space Grotesk","Inter","sans-serif"] },
+      },
+    },
+  };
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+  .reveal{opacity:0;transform:translateY(28px);transition:all .8s cubic-bezier(.16,1,.3,1);}
+  .reveal.is-visible{opacity:1;transform:translateY(0);}
+  .grad-text{background:linear-gradient(90deg,#fbbf24,#f97316,#fb7185,#fbbf24);background-size:300% 100%;
+    -webkit-background-clip:text;background-clip:text;color:transparent;animation:gradflow 5s linear infinite;}
+  @keyframes gradflow{0%{background-position:0% 50%}100%{background-position:300% 50%}}
+  /* 点阵背景 */
+  .dots{background-image:radial-gradient(rgba(251,191,36,.12) 1px,transparent 1px);background-size:26px 26px;}
+  /* 彩虹按钮 */
+  .rainbow-btn{padding:14px 34px;border-radius:999px;font-weight:700;color:#fff;border:none;cursor:pointer;
+    background:linear-gradient(90deg,#f59e0b,#fb7185,#fbbf24);background-size:300% 100%;animation:gradflow 4s linear infinite;
+    box-shadow:0 8px 24px rgba(249,115,22,.35);transition:transform .2s;}
+  .rainbow-btn:hover{transform:scale(1.05);}
+  .glare{position:relative;overflow:hidden;border-radius:20px;background:#fff;cursor:pointer;}
+  .glare::after{content:'';position:absolute;top:-50%;left:-60%;width:50%;height:200%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);transform:rotate(20deg);transition:left .6s;}
+  .glare:hover::after{left:120%;}
+  @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;}.reveal{opacity:1;transform:none;}}
+</style>
+</head>
+<body class="bg-[#fffbf5] text-neutral-900 overflow-x-hidden">
+
+<!-- 导航 -->
+<header class="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-[#fffbf5]/80 border-b border-neutral-200/60">
+  <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-2 font-display font-bold text-lg">
+      <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-400 to-accent flex items-center justify-center text-white">💧</span>
+      Nova
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-neutral-600">
+      <a href="#features" class="hover:text-neutral-900 transition">功能</a>
+      <a href="#product" class="hover:text-neutral-900 transition">产品</a>
+      <a href="#pricing" class="hover:text-neutral-900 transition">价格</a>
+    </div>
+    <button class="rainbow-btn !py-2.5 !px-5 text-sm">立即购买</button>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="relative min-h-screen flex items-center pt-24 pb-16 dots">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center w-full">
+    <div>
+      <span class="reveal inline-block text-xs font-semibold text-brand-600 bg-brand-300/20 border border-brand-400/30 rounded-full px-4 py-1.5 mb-6">新品首发 · 限时 8 折</span>
+      <h1 class="reveal font-display text-5xl md:text-6xl font-bold leading-[1.1] tracking-tight">
+        让喝水成为<br><span class="grad-text">一种享受</span>
+      </h1>
+      <p class="reveal mt-6 text-lg text-neutral-600 leading-relaxed">
+        Nova 智能水杯，实时监测饮水数据、智能提醒补水、精准温控保温，用科技温柔守护你的每一天。
+      </p>
+      <div class="reveal mt-10 flex flex-col sm:flex-row gap-4">
+        <button class="rainbow-btn">立即购买 ¥299</button>
+        <a href="#product" class="px-8 py-3.5 rounded-full font-medium border border-neutral-300 text-neutral-700 hover:bg-neutral-100 transition text-center">了解详情</a>
+      </div>
+      <div class="reveal mt-10 flex items-center gap-4">
+        <div class="text-brand-500 text-xl">★★★★★</div>
+        <p class="text-sm text-neutral-500">4.9 分 · 2,300+ 真实评价</p>
+      </div>
+    </div>
+    <div class="reveal relative flex justify-center">
+      <div class="relative w-72 h-72 md:w-96 md:h-96 rounded-full bg-gradient-to-br from-brand-300/40 to-accent/30 flex items-center justify-center">
+        <div class="absolute inset-8 rounded-full bg-gradient-to-br from-brand-400 to-accent opacity-90 flex items-center justify-center text-8xl shadow-2xl">💧</div>
+        <div class="absolute -top-2 -right-2 w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-2xl animate-bounce">🔔</div>
+        <div class="absolute -bottom-3 -left-3 w-14 h-14 rounded-full bg-white shadow-lg flex items-center justify-center text-xl">🌡️</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 功能 -->
+<section id="features" class="max-w-6xl mx-auto px-6 py-24">
+  <div class="text-center mb-14">
+    <h2 class="reveal font-display text-4xl md:text-5xl font-bold">三大核心功能</h2>
+    <p class="reveal mt-4 text-neutral-600 text-lg">从提醒到监测，全方位守护你的饮水健康。</p>
+  </div>
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="reveal glare p-8 border border-neutral-200 bg-white">
+      <div class="text-4xl mb-4">💡</div>
+      <h3 class="text-xl font-bold mb-2">智能补水提醒</h3>
+      <p class="text-neutral-600">根据你的活动量与天气，AI 智能计算补水节奏，温柔提醒你按时喝水。</p>
+    </div>
+    <div class="reveal glare p-8 border border-neutral-200 bg-white" style="transition-delay:.1s">
+      <div class="text-4xl mb-4">📊</div>
+      <h3 class="text-xl font-bold mb-2">精准数据监测</h3>
+      <p class="text-neutral-600">实时记录每次饮水量，生成专属健康报告，让进步清晰可见。</p>
+    </div>
+    <div class="reveal glare p-8 border border-neutral-200 bg-white" style="transition-delay:.2s">
+      <div class="text-4xl mb-4">🌡️</div>
+      <h3 class="text-xl font-bold mb-2">智能温控保温</h3>
+      <p class="text-neutral-600">精准控温 12 小时，无论热茶还是冰饮，随时都是最舒适的温度。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 产品展示 -->
+<section id="product" class="bg-white py-24 border-y border-neutral-200">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+    <div class="reveal flex justify-center">
+      <div class="w-72 h-96 rounded-[2rem] bg-gradient-to-b from-brand-300 to-accent/80 flex items-center justify-center text-7xl shadow-xl">💧</div>
+    </div>
+    <div>
+      <h2 class="reveal font-display text-4xl font-bold">颜值与实力并存</h2>
+      <ul class="mt-8 space-y-4">
+        <li class="reveal flex items-start gap-3"><span class="text-brand-500 font-bold">✓</span><span class="text-neutral-700">食品级 316 不锈钢内胆，安全耐用</span></li>
+        <li class="reveal flex items-start gap-3"><span class="text-brand-500 font-bold">✓</span><span class="text-neutral-700">OLED 触控屏，实时显示水温与饮水数据</span></li>
+        <li class="reveal flex items-start gap-3"><span class="text-brand-500 font-bold">✓</span><span class="text-neutral-700">30 天长续航，一次充电用一个月</span></li>
+        <li class="reveal flex items-start gap-3"><span class="text-brand-500 font-bold">✓</span><span class="text-neutral-700">IPX7 防水，全身可水洗</span></li>
+        <li class="reveal flex items-start gap-3"><span class="text-brand-500 font-bold">✓</span><span class="text-neutral-700">多色可选，搭配你的个性</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 价格 -->
+<section id="pricing" class="max-w-5xl mx-auto px-6 py-24">
+  <div class="text-center mb-14">
+    <h2 class="reveal font-display text-4xl md:text-5xl font-bold">选择你的款式</h2>
+  </div>
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="reveal rounded-2xl border border-neutral-200 bg-white p-8">
+      <h3 class="font-bold text-lg">经典款</h3>
+      <p class="mt-2 text-3xl font-display font-bold">¥299</p>
+      <p class="mt-1 text-sm text-neutral-500">基础功能，性价比之选</p>
+      <button class="mt-6 w-full py-3 rounded-full font-medium border border-neutral-300 hover:bg-neutral-100 transition">选择</button>
+    </div>
+    <div class="reveal rounded-2xl border-2 border-brand-400 bg-gradient-to-b from-brand-300/10 to-white p-8 relative" style="transition-delay:.1s">
+      <span class="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-bold bg-gradient-to-r from-brand-500 to-accent text-white px-3 py-1 rounded-full">最受欢迎</span>
+      <h3 class="font-bold text-lg">智能款</h3>
+      <p class="mt-2 text-3xl font-display font-bold">¥399</p>
+      <p class="mt-1 text-sm text-neutral-500">全功能，OLED 屏 + 数据监测</p>
+      <button class="mt-6 w-full py-3 rounded-full font-bold text-white rainbow-btn">立即购买</button>
+    </div>
+    <div class="reveal rounded-2xl border border-neutral-200 bg-white p-8" style="transition-delay:.2s">
+      <h3 class="font-bold text-lg">旗舰款</h3>
+      <p class="mt-2 text-3xl font-display font-bold">¥599</p>
+      <p class="mt-1 text-sm text-neutral-500">限量联名，温控进阶</p>
+      <button class="mt-6 w-full py-3 rounded-full font-medium border border-neutral-300 hover:bg-neutral-100 transition">选择</button>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="border-t border-neutral-200 py-12">
+  <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-neutral-500">
+    <div class="flex items-center gap-2 font-display font-bold text-neutral-900">
+      <span class="w-6 h-6 rounded-md bg-gradient-to-br from-brand-400 to-accent flex items-center justify-center text-xs text-white">💧</span>
+      Nova
+    </div>
+    <div class="flex gap-6">
+      <a href="#" class="hover:text-neutral-900 transition">关于我们</a>
+      <a href="#" class="hover:text-neutral-900 transition">售后服务</a>
+      <a href="#" class="hover:text-neutral-900 transition">隐私政策</a>
+    </div>
+    <p>© 2026 Nova. 保留所有权利</p>
+  </div>
+</footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target);}})},{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

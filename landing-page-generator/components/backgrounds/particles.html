@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>粒子背景</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;margin:0;overflow-x:hidden;}
+.bg-layer{position:fixed;inset:0;z-index:0;}
+.content{position:relative;z-index:1;}
+
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;}}
+</style>
+</head>
+<body class="bg-neutral-950 text-white min-h-screen">
+<div class="bg-layer"><canvas id="c" class="w-full h-full"></canvas></div>
+<div class="content min-h-screen flex items-center justify-center text-center p-8">
+  <div>
+    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight">粒子星海</h1>
+    <p class="mt-6 text-neutral-300 text-lg max-w-xl mx-auto">Canvas 绘制漂浮粒子并连线，营造科技与深邃感。</p>
+  </div>
+</div>
+<script>
+const cv=document.getElementById('c'),ctx=cv.getContext('2d');let w,h,ps=[];
+function resize(){w=cv.width=innerWidth;h=cv.height=innerHeight;}
+resize();addEventListener('resize',resize);
+const N=Math.min(120,Math.floor(w*h/16000));
+for(let i=0;i<N;i++)ps.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,r:Math.random()*1.8+1});
+function loop(){ctx.clearRect(0,0,w,h);
+  for(const p of ps){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,7);ctx.fillStyle='rgba(167,139,250,.8)';ctx.fill();}
+  for(let i=0;i<ps.length;i++)for(let j=i+1;j<ps.length;j++){const a=ps[i],b=ps[j],d=(a.x-b.x)**2+(a.y-b.y)**2;
+    if(d<12000){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=`rgba(167,139,250,${.2*(1-d/12000)})`;ctx.stroke();}}
+  requestAnimationFrame(loop);}
+loop();
+</script>
+</body>
+</html>

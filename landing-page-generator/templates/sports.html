@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VELOCITY — Performance Engineered</title>
+<meta name="description" content="Velocity athletic gear. Built for speed, engineered for the body in motion." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: { volt: "#d4ff3f", ink: "#0a0a0a", ash: "#161616" },
+    fontFamily: { display: ["Anton", "sans-serif"], sans: ["Inter", "sans-serif"] },
+  } } };
+</script>
+<style>
+  body { background: #0a0a0a; color: #f5f5f5; font-family: "Inter", sans-serif; }
+  .font-display { font-family: "Anton", sans-serif; letter-spacing: 0.01em; }
+
+  /* 签名元素：斜切块 + 速度线 */
+  .skew-block { transform: skewX(-6deg); }
+  .skew-inner { transform: skewX(6deg); }
+
+  .speed-lines {
+    background-image: repeating-linear-gradient(
+      -18deg,
+      rgba(212,255,63,0.12) 0px, rgba(212,255,63,0.12) 1px, transparent 1px, transparent 14px
+    );
+  }
+
+  @keyframes slide {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(100vw); }
+  }
+  .streak {
+    position: absolute; top: 0; bottom: 0; width: 40vw;
+    background: linear-gradient(90deg, transparent, rgba(212,255,63,0.35), transparent);
+    animation: slide 3.2s linear infinite;
+    pointer-events: none;
+  }
+
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .streak { animation: none; opacity: 0; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body class="bg-ink text-white overflow-x-hidden">
+
+<!-- Nav -->
+<header class="fixed top-0 inset-x-0 z-50 bg-ink/90 backdrop-blur border-b border-white/10">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="#" class="font-display text-2xl tracking-wide">VELOCITY<span class="text-volt">.</span></a>
+    <nav class="hidden md:flex items-center gap-8 text-sm text-white/60">
+      <a href="#gear" class="hover:text-white transition">Gear</a>
+      <a href="#athletes" class="hover:text-white transition">Athletes</a>
+      <a href="#tech" class="hover:text-white transition">Tech</a>
+    </nav>
+    <a href="#cta" class="font-semibold text-sm px-5 py-2.5 bg-volt text-ink hover:brightness-110 transition">Shop Now</a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
+  <div class="speed-lines absolute inset-0 opacity-60"></div>
+  <div class="streak"></div>
+
+  <div class="relative max-w-6xl mx-auto px-6 w-full">
+    <div class="reveal">
+      <p class="text-xs font-semibold tracking-[0.3em] text-volt uppercase mb-6">Performance Engineered</p>
+    </div>
+    <h1 class="reveal font-display leading-[0.9] text-[16vw] md:text-[10rem] uppercase">
+      <span class="block">Move</span>
+      <span class="block text-volt">Faster<span class="text-white">.</span></span>
+    </h1>
+    <div class="mt-10 flex flex-col md:flex-row md:items-end md:justify-between gap-8 reveal">
+      <p class="max-w-md text-lg text-white/60 leading-relaxed">
+        Gear built around the body in motion. Lightweight, aerodynamic, and tested by athletes who never slow down.
+      </p>
+      <div class="flex gap-10">
+        <div>
+          <div class="font-display text-5xl text-volt">-38%</div>
+          <div class="text-xs uppercase tracking-widest text-white/40 mt-1">Drag</div>
+        </div>
+        <div>
+          <div class="font-display text-5xl text-volt">120g</div>
+          <div class="text-xs uppercase tracking-widest text-white/40 mt-1">Weight</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-0 inset-x-0">
+    <div class="skew-block bg-volt h-14 -mx-4">
+      <div class="skew-inner h-full flex items-center justify-around text-ink font-display text-lg uppercase px-6">
+        <span>Track</span><span>•</span><span>Field</span><span>•</span><span>Road</span><span>•</span><span>Trail</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gear -->
+<section id="gear" class="py-24 px-6 max-w-6xl mx-auto">
+  <h2 class="reveal font-display text-4xl md:text-5xl uppercase mb-12">The Lineup</h2>
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="reveal bg-ash border border-white/10 p-8 hover:border-volt transition group">
+      <div class="font-display text-6xl text-volt mb-4">01</div>
+      <h3 class="font-display text-2xl uppercase mb-2">Aero Singlet</h3>
+      <p class="text-sm text-white/50">Featherweight mesh that breathes at full sprint.</p>
+    </div>
+    <div class="reveal bg-ash border border-white/10 p-8 hover:border-volt transition group">
+      <div class="font-display text-6xl text-volt mb-4">02</div>
+      <h3 class="font-display text-2xl uppercase mb-2">Carbon Spikes</h3>
+      <p class="text-sm text-white/50">Energy-return plate tuned for explosive starts.</p>
+    </div>
+    <div class="reveal bg-ash border border-white/10 p-8 hover:border-volt transition group">
+      <div class="font-display text-6xl text-volt mb-4">03</div>
+      <h3 class="font-display text-2xl uppercase mb-2">Compression Fit</h3>
+      <p class="text-sm text-white/50">Targeted support that moves with every stride.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta" class="py-24 px-6 bg-volt text-ink">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="reveal font-display text-5xl md:text-7xl uppercase leading-[0.9]">Ready to<br>break yours?</h2>
+    <a href="#" class="reveal inline-block mt-10 bg-ink text-white font-display text-xl uppercase px-12 py-5 hover:brightness-125 transition">Shop the Drop</a>
+  </div>
+</section>
+
+<footer class="py-10 px-6 border-t border-white/10">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/40">
+    <span class="font-display text-lg text-white">VELOCITY.</span>
+    <span>© 2024 Velocity Athletics</span>
+  </div>
+</footer>
+
+<script>
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>滚动进度条</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body{font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;margin:0;}
+.progress{position:fixed;top:0;left:0;height:4px;width:0;z-index:50;
+  background:linear-gradient(90deg,#f472b6,#a78bfa,#60a5fa);transition:width .1s;}
+</style>
+</head>
+<body class="bg-neutral-950 text-white">
+<div class="progress" id="progress"></div>
+<div class="max-w-2xl mx-auto px-6 py-24 space-y-12">
+  <h1 class="text-4xl font-extrabold">向下滚动查看进度条</h1>
+  <p class="text-neutral-400 leading-8">顶部的渐变进度条会随着你的滚动实时增长，直观反映阅读进度。这是博客、长文落地页常见的细节优化，能显著提升用户的掌控感。</p>
+  <section class="space-y-4"><h2 class="text-2xl font-bold">第一部分</h2><p class="text-neutral-500 leading-7">这里是一些示例内容，用来撑起页面高度，方便你观察滚动进度条的变化。继续向下滚动，你会看到进度条逐步增长。</p></section>
+  <section class="space-y-4"><h2 class="text-2xl font-bold">第二部分</h2><p class="text-neutral-500 leading-7">滚动进度条的实现非常简单，只需监听 scroll 事件，计算已滚动距离与总可滚动距离的比例，再更新进度条宽度即可。</p></section>
+  <section class="space-y-4"><h2 class="text-2xl font-bold">第三部分</h2><p class="text-neutral-500 leading-7">配合渐变背景与平滑过渡，让进度条看起来更精致。你可以自定义颜色以匹配品牌主色调。</p></section>
+  <section class="space-y-4"><h2 class="text-2xl font-bold">第四部分</h2><p class="text-neutral-500 leading-7">恭喜，你已经滚动到了接近底部的位置，顶部进度条应该也已经接近填满。</p></section>
+</div>
+<script>
+const bar=document.getElementById('progress');
+addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-innerHeight;
+  bar.style.width=(scrollY/h*100)+'%';
+});
+</script>
+</body>
+</html>

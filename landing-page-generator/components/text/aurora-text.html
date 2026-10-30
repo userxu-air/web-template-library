@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>极光渐变文字</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+
+.aurora{background:linear-gradient(120deg,#00f5a0,#00d9f5,#a78bfa,#f472b6,#00f5a0);
+  background-size:400% 400%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:aurora 8s ease infinite;filter:drop-shadow(0 0 24px rgba(167,139,250,.4));}
+@keyframes aurora{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;}}
+</style>
+</head>
+<body class="bg-neutral-950 text-white min-h-screen flex items-center justify-center p-8">
+<div class="text-center">
+  <h1 class="aurora text-6xl md:text-8xl font-extrabold tracking-tight">极光之夜</h1>
+  <p class="mt-6 text-neutral-400 text-lg">多色极光在文字上流动，营造梦幻氛围。</p>
+</div>
+<script></script>
+</body>
+</html>

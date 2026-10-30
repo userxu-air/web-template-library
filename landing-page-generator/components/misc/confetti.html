@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>彩带庆祝</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+
+.confetti-btn{padding:14px 36px;border-radius:999px;font-weight:700;border:none;cursor:pointer;
+  background:linear-gradient(135deg,#f472b6,#a78bfa);color:#fff;}
+.confetti{position:fixed;top:-10px;width:10px;height:14px;z-index:50;pointer-events:none;}
+
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;}}
+</style>
+</head>
+<body class="bg-neutral-950 text-white min-h-screen flex items-center justify-center p-8">
+<div class="text-center">
+  <button class="confetti-btn" onclick="burst()">🎉 点我庆祝</button>
+</div>
+<script>
+const colors=['#f472b6','#a78bfa','#60a5fa','#34d399','#fbbf24','#f87171'];
+function burst(){for(let i=0;i<120;i++){
+  const c=document.createElement('div');c.className='confetti';
+  c.style.left=Math.random()*100+'vw';c.style.background=colors[i%colors.length];
+  c.style.transform=`rotate(${Math.random()*360}deg)`;
+  document.body.appendChild(c);
+  const dx=(Math.random()-.5)*300,rot=Math.random()*720;
+  c.animate([{transform:'translate(0,0) rotate(0)',opacity:1},
+    {transform:`translate(${dx}px,90vh) rotate(${rot}deg)`,opacity:0}],
+    {duration:2000+Math.random()*1500,easing:'cubic-bezier(.2,.6,.4,1)'})
+    .onfinish=()=>c.remove();
+}}
+</script>
+</body>
+</html>

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>YUEZHOU — Benchtop Labeling Machines | Source Manufacturer</title>
+<meta name="description" content="Yuezhou Machinery is a source manufacturer of benchtop labeling machines. Compact & elegant, effortless operation — precision labeling for electronics, pharma, food and more. Factory direct from Dongguan, China." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brand: { 50:"#eef4ff", 100:"#dbe7ff", 300:"#259ded", 400:"#1F65CE", 500:"#1346af", 600:"#0f3a8f", 700:"#0b2e70" },
+          ink: "#1a1a2e",
+          body: "#5b6572",
+        },
+        fontFamily: {
+          display: ["Space Grotesk", "sans-serif"],
+          sans: ["Poppins", "sans-serif"],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  :root { --brand: #1346af; --brand-light: #1F65CE; --brand-accent: #259ded; }
+  html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+  body { background: #ffffff; color: #1a1a2e; font-family: "Poppins", sans-serif; }
+  .font-display { font-family: "Space Grotesk", sans-serif; }
+
+  /* soft grid backdrop */
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(19,70,175,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(19,70,175,.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 75% 65% at 50% 0%, #000 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 0%, #000 30%, transparent 75%);
+  }
+
+  /* gradient flow text */
+  .grad-text {
+    background: linear-gradient(100deg, #1346af 0%, #259ded 50%, #1346af 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    animation: gradflow 6s linear infinite;
+  }
+  @keyframes gradflow { to { background-position: 200% center; } }
+
+  /* staggered text reveal */
+  .word { display: inline-block; opacity: 0; transform: translateY(30px) rotate(2deg); animation: wordUp .8s cubic-bezier(.16,1,.3,1) forwards; }
+  @keyframes wordUp { to { opacity: 1; transform: translateY(0) rotate(0); } }
+
+  /* scroll reveal */
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  /* magnetic button */
+  .magnetic { transition: transform .3s cubic-bezier(.16,1,.3,1); }
+
+  /* card lift + blue glow */
+  .card-hover { transition: transform .45s cubic-bezier(.16,1,.3,1), box-shadow .45s, border-color .45s; }
+  .card-hover:hover { transform: translateY(-8px); box-shadow: 0 24px 60px -24px rgba(19,70,175,.35); border-color: rgba(19,70,175,.35); }
+
+  /* shimmer button */
+  .btn-shimmer { position: relative; overflow: hidden; }
+  .btn-shimmer::after {
+    content:""; position:absolute; inset:0;
+    background: linear-gradient(110deg, transparent 25%, rgba(255,255,255,.4) 50%, transparent 75%);
+    transform: translateX(-100%); transition: transform .7s ease;
+  }
+  .btn-shimmer:hover::after { transform: translateX(100%); }
+
+  /* marquee */
+  .marquee-track { display:flex; width:max-content; animation: marquee 30s linear infinite; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* machine float */
+  .float-slow { animation: float 7s ease-in-out infinite; }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+  /* label roller spin */
+  .roller { transform-origin: center; transform-box: fill-box; animation: spin 6s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* label drop animation */
+  .label-chip { animation: labelDrop 3.4s ease-in-out infinite; }
+  @keyframes labelDrop {
+    0%   { opacity: 0; transform: translate(0, -6px) scale(.8); }
+    20%  { opacity: 1; transform: translate(0, 0) scale(1); }
+    70%  { opacity: 1; transform: translate(0, 54px) scale(1); }
+    100% { opacity: 0; transform: translate(0, 60px) scale(.9); }
+  }
+
+  /* scanning line */
+  .scan-line { animation: scan 3.6s ease-in-out infinite; }
+  @keyframes scan { 0%,100% { top: 6%; } 50% { top: 90%; } }
+
+  /* floating badge pulse */
+  .pulse-dot { animation: pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(37,157,237,.5); } 50% { box-shadow: 0 0 0 8px rgba(37,157,237,0); } }
+
+  /* icon pop */
+  .icon-pop { transition: transform .4s cubic-bezier(.34,1.56,.64,1); }
+  .group:hover .icon-pop { transform: scale(1.15) rotate(-4deg); }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal, .word { opacity: 1 !important; transform: none !important; }
+  }
+</style>
+</head>
+<body class="bg-white text-ink overflow-x-hidden">
+
+<!-- ============ NAV ============ -->
+<header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <nav class="mx-auto max-w-7xl px-6 lg:px-8 h-16 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-2.5">
+      <span class="grid place-items-center w-9 h-9 rounded-lg bg-brand-500 text-white font-display font-bold text-lg">YZ</span>
+      <span class="font-display font-semibold tracking-wide text-ink">YUEZHOU<span class="text-brand-500">.</span></span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-body">
+      <a href="#machines" class="hover:text-brand-500 transition">Machines</a>
+      <a href="#features" class="hover:text-brand-500 transition">Features</a>
+      <a href="#applications" class="hover:text-brand-500 transition">Applications</a>
+      <a href="#factory" class="hover:text-brand-500 transition">Factory</a>
+      <a href="#contact" class="hover:text-brand-500 transition">Contact</a>
+    </div>
+    <a href="#contact" class="magnetic btn-shimmer hidden sm:inline-flex items-center gap-2 rounded-lg bg-brand-500 hover:bg-brand-400 text-white font-semibold text-sm px-4 py-2.5 transition">
+      Get a Quote
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="relative overflow-hidden pt-16 bg-gradient-to-b from-brand-50 to-white">
+  <div class="absolute inset-0 grid-bg"></div>
+  <div class="absolute -top-24 right-[-10%] w-[520px] h-[520px] rounded-full bg-brand-300/15 blur-[120px] pointer-events-none"></div>
+  <div class="absolute top-40 left-[-8%] w-[380px] h-[380px] rounded-full bg-brand-400/10 blur-[100px] pointer-events-none"></div>
+
+  <div class="relative mx-auto max-w-7xl px-6 lg:px-8 pt-16 pb-24 lg:pt-24 lg:pb-28 grid lg:grid-cols-2 gap-14 items-center">
+    <div>
+      <div class="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white px-4 py-1.5 text-xs font-medium tracking-wide text-brand-600">
+        <span class="pulse-dot w-2 h-2 rounded-full bg-brand-500"></span>
+        Source Manufacturer · Dongguan, China
+      </div>
+      <h1 class="mt-6 font-display text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.03] tracking-tight">
+        <span class="word" style="animation-delay:.05s">Benchtop</span>
+        <span class="word" style="animation-delay:.15s">labeling,</span><br />
+        <span class="word grad-text" style="animation-delay:.25s">perfected.</span>
+      </h1>
+      <p class="mt-6 text-lg text-body max-w-lg leading-relaxed">
+        <span class="font-semibold text-ink">Compact &amp; elegant. Effortless operation.</span>
+        Precision benchtop labeling machines engineered for the modern production line — factory direct from Yuezhou.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <a href="#machines" class="magnetic btn-shimmer inline-flex items-center gap-2 rounded-lg bg-brand-500 hover:bg-brand-400 text-white font-semibold px-6 py-3.5 transition shadow-lg shadow-brand-500/25">
+          Explore Machines
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#factory" class="magnetic inline-flex items-center gap-2 rounded-lg border border-brand-200 hover:border-brand-400 text-brand-600 px-6 py-3.5 font-semibold transition">
+          Why Factory Direct
+        </a>
+      </div>
+
+      <!-- count-up stats -->
+      <div class="mt-12 grid grid-cols-3 gap-6 max-w-md">
+        <div class="border-l-2 border-brand-300 pl-4">
+          <div class="font-display text-3xl font-bold text-ink"><span class="count" data-target="0.2" data-decimals="1">0</span><span class="text-brand-500 text-lg">mm</span></div>
+          <div class="mt-1 text-xs text-body">Labeling accuracy</div>
+        </div>
+        <div class="border-l-2 border-brand-300 pl-4">
+          <div class="font-display text-3xl font-bold text-ink"><span class="count" data-target="80">0</span></div>
+          <div class="mt-1 text-xs text-body">Pcs / minute</div>
+        </div>
+        <div class="border-l-2 border-brand-300 pl-4">
+          <div class="font-display text-3xl font-bold text-ink"><span class="count" data-target="10">0</span>+</div>
+          <div class="mt-1 text-xs text-body">Industries served</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product visual -->
+    <div class="relative">
+      <div class="relative aspect-[4/3] max-w-[560px] mx-auto rounded-3xl border border-brand-100 bg-white/70 backdrop-blur p-6 shadow-2xl shadow-brand-500/10 overflow-hidden">
+        <div class="absolute inset-0 rounded-3xl overflow-hidden">
+          <div class="scan-line absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-400/60 to-transparent"></div>
+        </div>
+        <div class="float-slow relative h-full w-full grid place-items-center">
+          <svg viewBox="0 0 460 340" class="w-full h-full" fill="none" stroke-linejoin="round">
+            <!-- machine body -->
+            <rect x="120" y="90" width="220" height="130" rx="14" fill="#f8faff" stroke="#1346af" stroke-width="2"/>
+            <rect x="120" y="90" width="220" height="130" rx="14" fill="url(#bodyGrad)"/>
+            <!-- screen -->
+            <rect x="145" y="112" width="120" height="52" rx="6" fill="#0f2a55" stroke="#1346af" stroke-width="1.5"/>
+            <rect x="156" y="122" width="60" height="8" rx="4" fill="#259ded"/>
+            <rect x="156" y="136" width="96" height="5" rx="2.5" fill="#3b6db0"/>
+            <rect x="156" y="147" width="70" height="5" rx="2.5" fill="#244f86"/>
+            <!-- label roller -->
+            <g class="roller">
+              <circle cx="300" cy="78" r="26" fill="#eaf1fd" stroke="#1346af" stroke-width="2"/>
+              <circle cx="300" cy="78" r="26" stroke="#259ded" stroke-width="1" stroke-dasharray="6 6" fill="none"/>
+              <circle cx="300" cy="78" r="9" fill="#1346af"/>
+            </g>
+            <!-- label feed line -->
+            <path d="M300 104 L300 118" stroke="#259ded" stroke-width="2" stroke-dasharray="4 4"/>
+            <!-- applicator head -->
+            <rect x="208" y="216" width="44" height="18" rx="6" fill="#1346af"/>
+            <rect x="218" y="210" width="24" height="8" rx="3" fill="#259ded"/>
+            <!-- base -->
+            <rect x="100" y="238" width="260" height="26" rx="8" fill="#e8eefc" stroke="#1346af" stroke-width="2"/>
+            <!-- product (box being labeled) -->
+            <rect x="230" y="262" width="70" height="44" rx="6" fill="#ffffff" stroke="#1346af" stroke-width="2"/>
+            <!-- applied label on product -->
+            <rect x="240" y="270" width="50" height="22" rx="3" fill="#259ded" opacity=".9"/>
+            <!-- the dropping label chip -->
+            <rect class="label-chip" x="214" y="220" width="32" height="16" rx="3" fill="#ffd34d" stroke="#1346af" stroke-width="1"/>
+            <!-- conveyor -->
+            <rect x="70" y="312" width="320" height="10" rx="5" fill="#dfe8f8"/>
+            <defs>
+              <linearGradient id="bodyGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#eaf1fd"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+      <!-- floating badges -->
+      <div class="absolute top-4 -right-2 flex items-center gap-2.5 rounded-xl border border-brand-100 bg-white px-4 py-3 shadow-lg">
+        <span class="grid place-items-center w-9 h-9 rounded-lg bg-brand-50 text-brand-500">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+        </span>
+        <div><div class="text-sm font-semibold text-ink">Plug &amp; label</div><div class="text-xs text-body">No training required</div></div>
+      </div>
+      <div class="absolute bottom-6 -left-2 flex items-center gap-2.5 rounded-xl border border-brand-100 bg-white px-4 py-3 shadow-lg">
+        <span class="grid place-items-center w-9 h-9 rounded-lg bg-brand-50 text-brand-500">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/></svg>
+        </span>
+        <div><div class="text-sm font-semibold text-ink">±0.2 mm</div><div class="text-xs text-body">High precision</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<section class="bg-brand-500 py-5 overflow-hidden">
+  <div class="marquee-track text-sm font-medium tracking-[0.18em] text-white/90">
+    <div class="flex shrink-0 items-center gap-10 pr-10">
+      <span>Electronics</span><span class="text-brand-300">●</span>
+      <span>Digital Products</span><span class="text-brand-300">●</span>
+      <span>Pharmaceutical</span><span class="text-brand-300">●</span>
+      <span>Food &amp; Beverage</span><span class="text-brand-300">●</span>
+      <span>Cosmetics</span><span class="text-brand-300">●</span>
+      <span>Stationery</span><span class="text-brand-300">●</span>
+      <span>Logistics</span><span class="text-brand-300">●</span>
+    </div>
+    <div class="flex shrink-0 items-center gap-10 pr-10" aria-hidden="true">
+      <span>Electronics</span><span class="text-brand-300">●</span>
+      <span>Digital Products</span><span class="text-brand-300">●</span>
+      <span>Pharmaceutical</span><span class="text-brand-300">●</span>
+      <span>Food &amp; Beverage</span><span class="text-brand-300">●</span>
+      <span>Cosmetics</span><span class="text-brand-300">●</span>
+      <span>Stationery</span><span class="text-brand-300">●</span>
+      <span>Logistics</span><span class="text-brand-300">●</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MACHINES ============ -->
+<section id="machines" class="mx-auto max-w-7xl px-6 lg:px-8 py-24">
+  <div class="reveal max-w-2xl">
+    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-500">The Machine</p>
+    <h2 class="mt-3 font-display text-3xl lg:text-5xl font-bold tracking-tight">Designed for the desk.<br />Built for the line.</h2>
+    <p class="mt-4 text-body text-lg">A full-featured benchtop labeler that fits on any workbench — no floor space, no complex setup, no specialist operator.</p>
+  </div>
+
+  <div class="mt-12 grid md:grid-cols-3 gap-6">
+    <div class="card-hover reveal group rounded-2xl border border-brand-100 bg-white p-7 shadow-sm">
+      <div class="grid place-items-center w-14 h-14 rounded-xl bg-brand-50 text-brand-500 icon-pop">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h6M7 12h10M7 16h4"/></svg>
+      </div>
+      <h3 class="mt-5 font-display text-xl font-semibold text-ink">Benchtop Flat-Surface</h3>
+      <p class="mt-3 text-sm text-body leading-relaxed">Precise top-surface labeling for cards, boxes, books, folders and flat components — ideal for small-batch, high-mix production.</p>
+      <div class="mt-5 pt-5 border-t border-brand-50 text-xs text-body space-y-1.5">
+        <div class="flex justify-between"><span>Accuracy</span><span class="font-semibold text-ink">±0.2 mm</span></div>
+        <div class="flex justify-between"><span>Speed</span><span class="font-semibold text-ink">30–80 pcs/min</span></div>
+      </div>
+    </div>
+
+    <div class="card-hover reveal group rounded-2xl border border-brand-100 bg-white p-7 shadow-sm">
+      <div class="grid place-items-center w-14 h-14 rounded-xl bg-brand-50 text-brand-500 icon-pop">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3a7 7 0 0 0-7 7v3a7 7 0 0 0 14 0v-3a7 7 0 0 0-7-7z"/><path d="M5 13H3v4h2M19 13h2v4h-2"/></svg>
+      </div>
+      <h3 class="mt-5 font-display text-xl font-semibold text-ink">Benchtop Round-Bottle</h3>
+      <p class="mt-3 text-sm text-body leading-relaxed">Wrap-around labeling for bottles, vials and cylindrical containers — consistent registration on every single unit.</p>
+      <div class="mt-5 pt-5 border-t border-brand-50 text-xs text-body space-y-1.5">
+        <div class="flex justify-between"><span>Accuracy</span><span class="font-semibold text-ink">±0.5 mm</span></div>
+        <div class="flex justify-between"><span>Speed</span><span class="font-semibold text-ink">15–60 pcs/min</span></div>
+      </div>
+    </div>
+
+    <div class="card-hover reveal group rounded-2xl border border-brand-100 bg-white p-7 shadow-sm">
+      <div class="grid place-items-center w-14 h-14 rounded-xl bg-brand-50 text-brand-500 icon-pop">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M4 12l3-3M4 12l3 3M20 12l-3-3M20 12l-3 3"/></svg>
+      </div>
+      <h3 class="mt-5 font-display text-xl font-semibold text-ink">Custom / OEM Solutions</h3>
+      <p class="mt-3 text-sm text-body leading-relaxed">Tailor-made fixtures, multiple label heads and custom workflows — engineered around your exact product and throughput.</p>
+      <div class="mt-5 pt-5 border-t border-brand-50 text-xs text-body space-y-1.5">
+        <div class="flex justify-between"><span>Lead time</span><span class="font-semibold text-ink">On request</span></div>
+        <div class="flex justify-between"><span>MOQ</span><span class="font-semibold text-ink">Flexible</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section id="features" class="bg-brand-50/50">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 py-24">
+    <div class="reveal max-w-2xl">
+      <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-500">Why Yuezhou</p>
+      <h2 class="mt-3 font-display text-3xl lg:text-5xl font-bold tracking-tight">Compact. Elegant. Effortless.</h2>
+    </div>
+
+    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="card-hover reveal rounded-2xl border border-brand-100 bg-white p-7">
+        <div class="font-display text-4xl font-bold text-brand-200">01</div>
+        <h3 class="mt-3 font-display text-lg font-semibold text-ink">Compact &amp; Elegant</h3>
+        <p class="mt-2 text-sm text-body leading-relaxed">A clean, space-saving footprint that sits neatly on any workbench. Industrial-grade build with a refined, modern finish.</p>
+      </div>
+      <div class="card-hover reveal rounded-2xl border border-brand-100 bg-white p-7">
+        <div class="font-display text-4xl font-bold text-brand-200">02</div>
+        <h3 class="mt-3 font-display text-lg font-semibold text-ink">Effortless Operation</h3>
+        <p class="mt-2 text-sm text-body leading-relaxed">Intuitive controls and quick changeover — any operator is productive within minutes, with no specialist training.</p>
+      </div>
+      <div class="card-hover reveal rounded-2xl border border-brand-100 bg-white p-7">
+        <div class="font-display text-4xl font-bold text-brand-200">03</div>
+        <h3 class="mt-3 font-display text-lg font-semibold text-ink">High-Precision</h3>
+        <p class="mt-2 text-sm text-body leading-relaxed">Accurate to ±0.2 mm on flat surfaces — delivering consistent, professional label placement unit after unit.</p>
+      </div>
+      <div class="card-hover reveal rounded-2xl border border-brand-100 bg-white p-7">
+        <div class="font-display text-4xl font-bold text-brand-200">04</div>
+        <h3 class="mt-3 font-display text-lg font-semibold text-ink">Multi-Surface</h3>
+        <p class="mt-2 text-sm text-body leading-relaxed">Handles flat, curved and recessed surfaces — one machine adapts to a wide range of products and label shapes.</p>
+      </div>
+      <div class="card-hover reveal rounded-2xl border border-brand-100 bg-white p-7">
+        <div class="font-display text-4xl font-bold text-brand-200">05</div>
+        <h3 class="mt-3 font-display text-lg font-semibold text-ink">Source Factory</h3>
+        <p class="mt-2 text-sm text-body leading-relaxed">Direct from our Dongguan facility — no middlemen, sharper pricing, faster response and full quality control.</p>
+      </div>
+      <div class="card-hover reveal rounded-2xl border border-brand-100 bg-white p-7">
+        <div class="font-display text-4xl font-bold text-brand-200">06</div>
+        <h3 class="mt-3 font-display text-lg font-semibold text-ink">Global Support</h3>
+        <p class="mt-2 text-sm text-body leading-relaxed">Responsive after-sales, spare parts and technical guidance — shipped and supported worldwide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPLICATIONS ============ -->
+<section id="applications" class="mx-auto max-w-7xl px-6 lg:px-8 py-24">
+  <div class="reveal max-w-2xl">
+    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-500">Applications</p>
+    <h2 class="mt-3 font-display text-3xl lg:text-5xl font-bold tracking-tight">One machine, every industry.</h2>
+  </div>
+
+  <div class="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div class="card-hover reveal group rounded-xl border border-brand-100 bg-white p-6 text-center">
+      <div class="text-3xl icon-pop">🔌</div>
+      <div class="mt-3 font-semibold text-ink">Electronics</div>
+      <div class="text-xs text-body mt-1">SD cards · FPC · batteries</div>
+    </div>
+    <div class="card-hover reveal group rounded-xl border border-brand-100 bg-white p-6 text-center">
+      <div class="text-3xl icon-pop">📱</div>
+      <div class="mt-3 font-semibold text-ink">Digital Products</div>
+      <div class="text-xs text-body mt-1">Chargers · accessories</div>
+    </div>
+    <div class="card-hover reveal group rounded-xl border border-brand-100 bg-white p-6 text-center">
+      <div class="text-3xl icon-pop">💊</div>
+      <div class="mt-3 font-semibold text-ink">Pharmaceutical</div>
+      <div class="text-xs text-body mt-1">Vials · bottles · cartons</div>
+    </div>
+    <div class="card-hover reveal group rounded-xl border border-brand-100 bg-white p-6 text-center">
+      <div class="text-3xl icon-pop">🍾</div>
+      <div class="mt-3 font-semibold text-ink">Food &amp; Beverage</div>
+      <div class="text-xs text-body mt-1">Bottles · jars · packs</div>
+    </div>
+    <div class="card-hover reveal group rounded-xl border border-brand-100 bg-white p-6 text-center">
+      <div class="text-3xl icon-pop">🧴</div>
+      <div class="mt-3 font-semibold text-ink">Cosmetics</div>
+      <div class="text-xs text-body mt-1">Tubes · jars · bottles</div>
+    </div>
+    <div class="card-hover reveal group rounded-xl border border-brand-100 bg-white p-6 text-center">
+      <div class="text-3xl icon-pop">📦</div>
+      <div class="mt-3 font-semibold text-ink">Stationery</div>
+      <div class="text-xs text-body mt-1">Books · folders · boxes</div>
+    </div>
+    <div class="card-hover reveal group rounded-xl border border-brand-100 bg-white p-6 text-center">
+      <div class="text-3xl icon-pop">🚚</div>
+      <div class="mt-3 font-semibold text-ink">Logistics</div>
+      <div class="text-xs text-body mt-1">Cartons · labels</div>
+    </div>
+    <div class="card-hover reveal group rounded-xl border border-brand-100 bg-white p-6 text-center">
+      <div class="text-3xl icon-pop">⚙️</div>
+      <div class="mt-3 font-semibold text-ink">Industrial</div>
+      <div class="text-xs text-body mt-1">Components · parts</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FACTORY ============ -->
+<section id="factory" class="bg-brand-500">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 py-24 grid lg:grid-cols-2 gap-14 items-center">
+    <div class="reveal">
+      <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-300">Source Manufacturer</p>
+      <h2 class="mt-3 font-display text-3xl lg:text-5xl font-bold tracking-tight text-white">Direct from our factory floor.</h2>
+      <p class="mt-5 text-brand-100 text-lg leading-relaxed">Yuezhou Machinery designs and manufactures its own labeling equipment in Dalang, Dongguan — China's manufacturing heartland. By cutting out distributors, we deliver better value, faster lead times and full control over quality.</p>
+      <ul class="mt-8 space-y-4">
+        <li class="flex items-start gap-3 text-brand-50">
+          <span class="grid place-items-center w-6 h-6 mt-0.5 rounded-md bg-white/15 shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></span>
+          In-house R&amp;D and engineering team
+        </li>
+        <li class="flex items-start gap-3 text-brand-50">
+          <span class="grid place-items-center w-6 h-6 mt-0.5 rounded-md bg-white/15 shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></span>
+          Patented technology and OEM/ODM capability
+        </li>
+        <li class="flex items-start gap-3 text-brand-50">
+          <span class="grid place-items-center w-6 h-6 mt-0.5 rounded-md bg-white/15 shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></span>
+          Products exported to domestic and global markets
+        </li>
+        <li class="flex items-start gap-3 text-brand-50">
+          <span class="grid place-items-center w-6 h-6 mt-0.5 rounded-md bg-white/15 shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></span>
+          Factory-direct pricing, no middlemen
+        </li>
+      </ul>
+    </div>
+
+    <div class="reveal grid grid-cols-2 gap-4">
+      <div class="col-span-2 rounded-2xl bg-white/10 border border-white/20 p-8 backdrop-blur">
+        <div class="font-display text-4xl font-bold text-white">2024<span class="text-brand-300">+</span></div>
+        <div class="mt-1 text-sm text-brand-100">Established · Dalang, Dongguan</div>
+      </div>
+      <div class="rounded-2xl bg-white/10 border border-white/20 p-8 backdrop-blur">
+        <div class="font-display text-4xl font-bold text-white">20–99</div>
+        <div class="mt-1 text-sm text-brand-100">Team members</div>
+      </div>
+      <div class="rounded-2xl bg-white/10 border border-white/20 p-8 backdrop-blur">
+        <div class="font-display text-4xl font-bold text-white">Global</div>
+        <div class="mt-1 text-sm text-brand-100">Export reach</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="relative overflow-hidden">
+  <div class="absolute inset-0 grid-bg"></div>
+  <div class="relative mx-auto max-w-7xl px-6 lg:px-8 py-24">
+    <div class="reveal rounded-3xl border border-brand-100 bg-white p-8 lg:p-16 text-center shadow-xl shadow-brand-500/10">
+      <h2 class="font-display text-3xl lg:text-5xl font-bold tracking-tight">Ready to label smarter?</h2>
+      <p class="mt-4 text-body text-lg max-w-xl mx-auto">Tell us about your product and target output. Our engineers will recommend the right benchtop machine and send a factory-direct quote.</p>
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="mailto:sales@yuezhou-machine.com" class="magnetic btn-shimmer inline-flex items-center gap-2 rounded-lg bg-brand-500 hover:bg-brand-400 text-white font-semibold px-8 py-4 transition shadow-lg shadow-brand-500/25">
+          Request a Quote
+        </a>
+        <a href="mailto:sales@yuezhou-machine.com" class="magnetic inline-flex items-center gap-2 rounded-lg border border-brand-200 hover:border-brand-400 text-brand-600 px-8 py-4 font-semibold transition">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          sales@yuezhou-machine.com
+        </a>
+      </div>
+      <p class="mt-8 text-sm text-body">Dalang Town, Dongguan City, Guangdong Province, China</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-ink text-white">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-2.5">
+      <span class="grid place-items-center w-8 h-8 rounded-lg bg-brand-500 font-display font-bold">YZ</span>
+      <span class="font-display font-semibold">YUEZHOU<span class="text-brand-300">.</span></span>
+    </div>
+    <p class="text-sm text-white/50 text-center">© 2026 Dongguan Yuezhou Machinery Equipment Co., Ltd. All rights reserved.</p>
+    <div class="flex items-center gap-5 text-sm text-white/50">
+      <a href="#machines" class="hover:text-white transition">Machines</a>
+      <a href="#applications" class="hover:text-white transition">Applications</a>
+      <a href="#contact" class="hover:text-white transition">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal (with stagger)
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = (i % 3) * 0.08 + 's';
+    io.observe(el);
+  });
+
+  // Count-up on scroll
+  const countIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseFloat(el.dataset.target);
+      const decimals = parseInt(el.dataset.decimals || '0');
+      const dur = 1400;
+      const start = performance.now();
+      function tick(now) {
+        const p = Math.min((now - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = (target * eased).toFixed(decimals);
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      countIO.unobserve(el);
+    });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('.count').forEach(el => countIO.observe(el));
+
+  // Magnetic buttons
+  document.querySelectorAll('.magnetic').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const r = btn.getBoundingClientRect();
+      const x = (e.clientX - r.left - r.width / 2) * 0.18;
+      const y = (e.clientY - r.top - r.height / 2) * 0.18;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+  });
+
+  // Navbar shadow on scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      navbar.classList.add('bg-white/85', 'backdrop-blur-xl', 'shadow-sm', 'border-b', 'border-brand-100');
+    } else {
+      navbar.classList.remove('bg-white/85', 'backdrop-blur-xl', 'shadow-sm', 'border-b', 'border-brand-100');
+    }
+  });
+</script>
+</body>
+</html>
